@@ -1,8 +1,26 @@
 LOCAL CGI Script for Rest Services: Postgres to JSON
 
 developed on cloud9 >> Basic Ubuntu Workspace (Blank)
-------------------
 
+Please check that .py files are executable ( step 00 )
+If you install this form a git clone to a fresh cloud9 vm, do also step 0
+otherwise jsut check to have already python 2.7x + psycopg2 module installed.
+
+------------------
+How To
+------------------
+00 - set file permnissions
+
+    sudo chmod a+x rest.py
+    sudo chmod a+x server.py
+    sudo chmod a+x rest_doc.py
+
+0 - install psycopg2
+
+    sudo apt-get update
+    sudo apt-get install libpq-dev python-dev
+    sudo pip install psycopg2
+    
 1 - Start Postgres Service
 
     sudo service postgresql start
