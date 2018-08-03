@@ -7,7 +7,7 @@ If you install this form a git clone to a fresh cloud9 vm, do also step 0
 otherwise jsut check to have already python 2.7x + psycopg2 module installed.
 
 ------------------
-How To
+How To Setup and Run
 ------------------
 00 - set file permnissions
 
