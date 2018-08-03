@@ -1,6 +1,10 @@
 LOCAL CGI Script for Rest Services: Postgres to JSON
 
-developed on cloud9 >> Basic Ubuntu Workspace (Blank)
+developed on cloud9
+
+    Basic Ubuntu 14.04.5 LTS Workspace (Blank)
+    PostgreSQL 9.3.18
+    Python 2.7.6
 
 Please check that .py files are executable ( step 00 )
 If you install this form a git clone to a fresh cloud9 vm, do also step 0
