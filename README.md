@@ -83,4 +83,6 @@ url - parameters:
     
     - obj = table_name (or) view_name (or) function_name
     
-    - params = (param1:val1, param2:val2, ... paramN:valN)  //Optional definition of function parameters
+    - params = (param1:'val1', param2:'val2', ... paramN:'valN')  //Optional definition of function parameters
+      note: parameters values are not quoted so you have to use single quote in the call right now; will add the quoting
+            directly in the function calling postgres functions.
