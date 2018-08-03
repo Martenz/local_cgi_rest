@@ -6,6 +6,8 @@ Please check that .py files are executable ( step 00 )
 If you install this form a git clone to a fresh cloud9 vm, do also step 0
 otherwise jsut check to have already python 2.7x + psycopg2 module installed.
 
+To clone to Cloud9 workspace directly see https://docs.c9.io/docs/setting-up-github-workspace
+
 ------------------
 How To Setup and Run
 ------------------
@@ -25,9 +27,7 @@ How To Setup and Run
 
     sudo service postgresql start
     
-2 - set postgre db
-
-    https://community.c9.io/t/setting-up-postgresql/1573
+2 - set postgre db (see https://community.c9.io/t/setting-up-postgresql/1573)
 
     psql
     ubuntu=# CREATE DATABASE "mydb";
