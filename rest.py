@@ -43,6 +43,7 @@ val1 = form.getvalue('first')
 print "Content-type: application/json"
 print "Status: 200 OK"
 print "Content-Type: application/json"
+print "Access-Control-Allow-Origin: *"
 
 body = json.dumps({'name':'Duccio'})
 
