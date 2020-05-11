@@ -1,13 +1,15 @@
 #!/usr/bin/env python
 
 import cgi
+import cgitb
+cgitb.enable()
 import psycopg2
 import json
 
-DBNAME = 'mydb'
+DBNAME = 'testdb'
 HOST = 'localhost'
-USER = 'ubuntu'
-PASSWORD = 'ubuntu123'
+USER = 'dbuser'
+PASSWORD = '123456'
 
 
 #---------- DB Tab&Fun QUERYs ----------#
@@ -40,21 +42,24 @@ form = cgi.FieldStorage()
 val1 = form.getvalue('first')
 
 #---------- Generate JSON Response ----------#
-print "Content-type: application/json"
-print "Status: 200 OK"
-print "Content-Type: application/json"
-print "Access-Control-Allow-Origin: *"
+print ("Content-type: application/json")
+print ("Status: 200 OK")
+print ("Content-Type: application/json")
+print ("Access-Control-Allow-Origin: *")
 
 body = json.dumps({'name':'Duccio'})
 
 body = json.dumps({})
 arguments = cgi.FieldStorage()
-if arguments.has_key('type'):
+#print (arguments)
+#if arguments.has_key('type'):
+if 'type' in arguments:
     if arguments['type'].value == 'tab':
         body = callDBtableview(arguments['schema'].value,arguments['obj'].value)
     elif arguments['type'].value == 'fun':
         params = ""
-        if arguments.has_key('params'):
+        #if arguments.has_key('params'):
+        if 'params' in arguments:
             params += arguments['params'].value[1:-1].replace(":",":=")
         body = callDBfunction(arguments['schema'].value,arguments['obj'].value, params)
     else:
@@ -64,12 +69,7 @@ else:
     body = json.dumps( {'Error' : 'Wrong parameters, must be ?type=[tab/fun]&schema=[schema_name]&obj=[table_name/function_name]&params=(p1:1,p2:2,...,pn=n)'} )
    
 
-print "Content-Length: %d" % (len(body))
-print ""
-print body
+print ("Content-Length: %d" % (len(body)))
+print ("")
+print (body)
 
-#print """Content-type: text/html
-#
-#<html><head><title>Test URL Encoding</title></head><body>
-#Hello my name is %s
-#</body></html>""" % (val1)

@@ -2,9 +2,9 @@ LOCAL CGI Script for Rest Services: Postgres to JSON
 
 developed on cloud9
 
-    Basic Ubuntu 14.04.5 LTS Workspace (Blank)
-    PostgreSQL 9.3.18
-    Python 2.7.6
+    Basic Ubuntu 20.04 LTS Workspace (Blank)
+    PostgreSQL 10 +
+    Python 3.8.2
 
 Please check that .py files are executable ( step 00 )
 If you install this form a git clone to a fresh cloud9 vm, do also step 0
@@ -25,7 +25,7 @@ How To Setup and Run
 
     sudo apt-get update
     sudo apt-get install libpq-dev python-dev
-    sudo pip install psycopg2
+    sudo pip install psycopg2 (sudo pip install psycopg2-binary)
     
 1 - Start Postgres Service
 
@@ -52,17 +52,17 @@ How To Setup and Run
     07#  DBNAME = 'mydb'
     08#  HOST = 'localhost'
     09#  USER = 'ubuntu'
-    10#  PASSWORD = 'ubuntu123'
+    10#  PASSWORD = '...'
     
 5 - Start the CGI Script for Local Rest Service Server (set PORT in server.py)
 
-    python server.py
+    $ python -m http.server --cgi 8000
     
 6 - Test the JSON response from an other Terminal:
 
     eg call the table we created before:
     
-    curl 'http://localhost:8888/rest.py?type=tab&schema=public&obj=mytable'
+    curl 'http://localhost:8000/cgi-bin/rest.py?type=tab&schema=public&obj=mytable'
     
     will print
     
@@ -86,7 +86,7 @@ How To Setup and Run
 
         then we test the Rest Call from terminal
         
-        curl "http://localhost:8888/rest.py?type=fun&schema=public&obj=f_people_colorvision&params=(color:'green')"
+        curl "http://localhost:8000/cgi-bin/rest.py?type=fun&schema=public&obj=f_people_colorvision&params=(color:'green')"
     
         that will print
         

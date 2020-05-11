@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-print """Content-type: text/html
+print ("""Content-type: text/html
 
 <html><head><title>Local Rest Services</title></head><body>
 
@@ -32,4 +32,4 @@ eg: "http://localhost:8888/rest.py?type=tab&schema=public&obj=ne_10m_admin_0_cou
 <p>Note: when calling tables or views leave <b>params=</b></p>
 
 
-</body></html>"""
+</body></html>""")
