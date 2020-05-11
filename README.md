@@ -8,7 +8,7 @@ developed on cloud9
 
 Please check that .py files are executable ( step 00 )
 If you install this form a git clone to a fresh cloud9 vm, do also step 0
-otherwise jsut check to have already python 2.7x + psycopg2 module installed.
+otherwise jsut check to have already python 3.8.x + psycopg2 module installed.
 
 To clone to Cloud9 workspace directly see https://docs.c9.io/docs/setting-up-github-workspace
 
@@ -25,7 +25,7 @@ How To Setup and Run
 
     sudo apt-get update
     sudo apt-get install libpq-dev python-dev
-    sudo pip install psycopg2 (sudo pip install psycopg2-binary)
+    sudo pip install psycopg2 (or>> sudo pip install psycopg2-binary)
     
 1 - Start Postgres Service
 
@@ -34,25 +34,25 @@ How To Setup and Run
 2 - set postgre db (see https://community.c9.io/t/setting-up-postgresql/1573)
 
     psql
-    ubuntu=# CREATE DATABASE "mydb";
-    ubuntu-# \password ubuntu
-    Enter new password: ubuntu123
+    user=# CREATE DATABASE "testdb";
+    user-# \password dbuser
+    Enter new password: 123456
     
 3 - Create a table
 
-    ubuntu=#\c mydb
-    mydb=#CREATE TABLE mytable (id serial, name text);
+    user=#\c testdb
+    testdb=#CREATE TABLE mytable (id serial, name text);
     
 4 - Insert some data
 
-    mydb=#INSERT INTO mytable (id,name) VALUES (0,'Duccio');
+    testdb=#INSERT INTO mytable (id,name) VALUES (0,'Duccio');
     
-5 - Set DB connection in rest.py
+5 - Set DB connection in /cgi-bin/rest.py
 
-    07#  DBNAME = 'mydb'
+    07#  DBNAME = 'testdb'
     08#  HOST = 'localhost'
-    09#  USER = 'ubuntu'
-    10#  PASSWORD = '...'
+    09#  USER = 'dbuser'
+    10#  PASSWORD = '123456'
     
 5 - Start the CGI Script for Local Rest Service Server (set PORT in server.py)
 
@@ -78,11 +78,11 @@ How To Setup and Run
         First we add the column and we add some more data to the DB
         
         psql
-        ubuntu=#\c mydb
-        mydb=#ALTER TABLE mytable ADD COLUMN vision text;
-        mydb=#UPDATE mytable set vision='green' WHERE name='Duccio';
-        mydb=#INSERT INTO mytable (id,name,vision) VALUES (1,'Sorrenti','ocra');
-        mydb=# CREATE OR REPLACE FUNCTION f_people_colorvision(color text) RETURNS TABLE(id int, name text) AS $$ SELECT id,name from mytable WHERE vision=$1 $$ LANGUAGE SQL; 
+        user=#\c testdb
+        testdb=#ALTER TABLE mytable ADD COLUMN vision text;
+        testdb=#UPDATE mytable set vision='green' WHERE name='Duccio';
+        testdb=#INSERT INTO mytable (id,name,vision) VALUES (1,'Sorrenti','ocra');
+        testdb=# CREATE OR REPLACE FUNCTION f_people_colorvision(color text) RETURNS TABLE(id int, name text) AS $$ SELECT id,name from mytable WHERE vision=$1 $$ LANGUAGE SQL; 
 
         then we test the Rest Call from terminal
         
