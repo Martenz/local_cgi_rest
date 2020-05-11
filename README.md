@@ -15,18 +15,24 @@ To clone to Cloud9 workspace directly see https://docs.c9.io/docs/setting-up-git
 ------------------
 How To Setup and Run
 ------------------
-00 - set file permnissions
+00 - set file permissions
 
     sudo chmod a+x rest.py
-    sudo chmod a+x server.py
-    sudo chmod a+x rest_doc.py
 
 0 - install psycopg2
 
     sudo apt-get update
     sudo apt-get install libpq-dev python-dev
     sudo pip install psycopg2 (or>> sudo pip install psycopg2-binary)
-    
+
+    --- alternatively install psycopg2 in your env python
+    * create env:
+        pyhton3 -m venv venv
+    * activate env
+        . venv/bin/activate
+    * install psycopg2 here
+        pip install psycopg2 (or>> sudo pip install psycopg2-binary)
+
 1 - Start Postgres Service
 
     sudo service postgresql start
