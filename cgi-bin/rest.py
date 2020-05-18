@@ -11,7 +11,6 @@ HOST = 'localhost'
 USER = 'dbuser'
 PASSWORD = '123456'
 
-
 #---------- DB Tab&Fun QUERYs ----------#
 def callDBtableview(schema,table):
     conn = psycopg2.connect(dbname=DBNAME, host=HOST, user=USER, password=PASSWORD)
